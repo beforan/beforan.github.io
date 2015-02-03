@@ -121,6 +121,7 @@ local function paint(canvas, ntimes)
 end
 ```
 The variable naming conventions in the above example imply the following to the reader.
+
 - `canvas` is a canvas object, perhaps one explicitly derived from something like `Canvas`, which is information possibly not otherwise easy to deduce from the code.
 - `ntimes` is an integer number of times to draw something.
 - `i` is conventionally an integer index, which though obvious, even if called something else, also keeps the code short.
