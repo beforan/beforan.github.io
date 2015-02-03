@@ -1,5 +1,6 @@
 ---
 title: Lua 5.1 Style Guide
+markdown: redcarpet
 ---
 
 # lua-users.org Lua Style Guide
