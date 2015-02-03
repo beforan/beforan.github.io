@@ -1,11 +1,6 @@
 title : Beforan's Pages
-layout: default
 author :
   name : Jon Couldridge
   email : jcouldridge@outlook.com
-permalink: /:year/:month/:day/:title.html
 
 markdown: redcarpet2
-
-redcarpet:
-  extensions: ["no_intra_emphasis", "autolink", "tables", "highlight"]
