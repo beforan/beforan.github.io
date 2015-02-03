@@ -76,41 +76,45 @@ However, see comments in the Modules section below concerning modules used as cl
 
 ### `_` as a variable name
 The variable consisting of only an underscore `_` is commonly used as a placeholder when you want to ignore the variable:
-
-    for _,v in ipairs(t) do print(v) end
+```lua
+for _,v in ipairs(t) do print(v) end
+```
 **Note:** This resembles the use of `_` in Haskell, Erlang, Ocaml, and Prolog languages, where `_` takes the special meaning of anonymous (ignored) variables in pattern matches. In Lua, `_` is only a convention with no inherent special meaning though. Semantic editors that normally flag unused variables may avoid doing so for variables named `_` (e.g. [LuaInspect] is such a case).
 
 [LuaInspect]: http://lua-users.org/wiki/LuaInspect
 
 ### Keys and Values in Tables
 `i`, `k`, `v`, and `t` are often used as follows:
-
-    for k,v in pairs(t) ... end
-    for i,v in ipairs(t) ... end
-    mt.__newindex = function(t, k, v) ... end
+```lua
+for k,v in pairs(t) ... end
+for i,v in ipairs(t) ... end
+mt.__newindex = function(t, k, v) ... end
+```
 
 ### `M` as the current module
 `M` is sometimes used as the "current module table" (e.g., see PIL2, 15.3).
 
 ### `self`
 `self` refers to the object a method is invoked on (like `this` in C++ or Java). In fact, this is enforced by the `:` syntactic sugar:
-
-    function Car:move(distance)
-      self.position = self.position + distance
-    end
+```lua
+function Car:move(distance)
+  self.position = self.position + distance
+end
+```
 
 ### Class names
 (or at least metatables representing classes) may be mixed case (`BankAccount`), or they might not be. If so, acronyms (e.g. `XML`) might only uppercase the first letter (`XmlDocument`).
 
 ### [Hungarian notations]
 Encoding semantic information into variable names can be helpful to readers of your code, particularly if that information cannot otherwise be easily deduced, though overdoing it may be redundant and reduce code readability. In some more static languages (e.g. C), where data types are known to the compiler, it is redundant to encode the data type into the variable name, but, even there, data type is not the only nor necessarily the most useful form of semantic information.
-
-    local function paint(canvas, ntimes)
-        for i=1,ntimes do
-            local hello_str_asc_lc_en_const = "hello world"
-            canvas:draw(hello_str_asc_lc_en_const:toupper())
-        end
-    end
+```lua
+local function paint(canvas, ntimes)
+  for i=1,ntimes do
+    local hello_str_asc_lc_en_const = "hello world"
+    canvas:draw(hello_str_asc_lc_en_const:toupper())
+  end
+end
+```
 The variable naming conventions in the above example imply the following to the reader.
 - `canvas` is a canvas object, perhaps one explicitly derived from something like `Canvas`, which is information possibly not otherwise easy to deduce from the code.
 - `ntimes` is an integer number of times to draw something.
@@ -131,31 +135,33 @@ Avoid deprecated features. In 5.1 these include `table.getn`, `table.setn`, `tab
 
 ## Scope
 Use locals rather than globals whenever possible.
-
-    local x = 0
-    local function count()
-        x = x + 1
-        print(x)
-    end
+```lua
+local x = 0
+local function count()
+  x = x + 1
+  print(x)
+end
+```
 Globals have larger scopes and lifetimes and therefore increase [[coupling]] and complexity. [[1]] Don't pollute the environment. In Lua, access to locals is also faster than globals [[PiL 4.2]] since globals require a table lookup at run-time, while locals exist as registers [[ScopeTutorial]].
 
 A useful method of detecting inadvertent use of globals is given in [DetectingUndefinedVariables][]. In Lua, globals are sometimes the result of mispellings and other lurking errors in your code.
 
 At times it is useful to further limit the scope of local variables with do-blocks [[PiL 4.2]]:
+```lua
+local v
+do
+  local x = u2*v3-u3*v2
+  local y = u3*v1-u1*v3
+  local z = u1*v2-u2*v1
+  v = {x,y,z}
+end
 
-    local v
-    do
-      local x = u2*v3-u3*v2
-      local y = u3*v1-u1*v3
-      local z = u1*v2-u2*v1
-      v = {x,y,z}
-    end
-    
-    local count
-    do
-      local x = 0
-      count = function() x = x + 1; return x end
-    end
+local count
+do
+  local x = 0
+  count = function() x = x + 1; return x end
+end
+```
 Global variables scope can be reduced as well via the Lua module system [PiL2 15] or [setfenv].
 
 [coupling]: http://en.wikipedia.org/wiki/Coupling_(computer_science)
@@ -169,65 +175,73 @@ Global variables scope can be reduced as well via the Lua module system [PiL2 15
 
 ## Modules
 The Lua 5.1 module system is often recommended. However, there have been some criticisms of the Lua 5.1 module system. For details, see [LuaModuleFunctionCritiqued], but in summary, you might think of writing a module like this:
-
-    -- hello/mytest.lua
-    module(..., package.seeall)
-    local function test() print(123) end
-    function test1() test() end
-    function test2() test1(); test1() end
+```lua
+-- hello/mytest.lua
+module(..., package.seeall)
+local function test() print(123) end
+function test1() test() end
+function test2() test1(); test1() end
+```
 and use it like this:
-
-    require "hello.mytest"
-    hello.mytest.test2()
+```lua
+require "hello.mytest"
+hello.mytest.test2()
+```
 The criticisms are that this creates a global variable `hello` in all modules (which is a side-effect), and the global environment is exposed through the `hello` table, e.g. `hello.mytest.print == _G.print` (which among various things could be detrimental to sandboxing and is just plain weird).
 
 These problems can be avoided by not using the `module` function but instead simply defining modules in the following simple way:
+```lua
+-- hello/mytest.lua
+local M = {}
 
-    -- hello/mytest.lua
-    local M = {}
-    
-    local function test() print(123) end
-    function M.test1() test() end
-    function M.test2() M.test1(); M.test1() end
-    
-    return M
+local function test() print(123) end
+function M.test1() test() end
+function M.test2() M.test1(); M.test1() end
+
+return M
+```
 and importing modules this way:
-
-    local MT = require "hello.mytest"
-    MT.test2()
+```lua
+local MT = require "hello.mytest"
+MT.test2()
+```
 
 A module containing a class with constructor (in the object-oriented sense) can be packaged in a number of ways in a module. Here is one reasonably good approach.[*2]
+```lua
+-- file: finance/BankAccount.lua
+local M = {}; M.__index = M
 
-    -- file: finance/BankAccount.lua
-    local M = {}; M.__index = M
-    
-    local function construct()
-      local self = setmetatable({balance = 0}, M)
-      return self
-    end
-    setmetatable(M, {__call = construct})
-    
-    function M:add(value) self.balance = self.balance + 1 end
-    
-    return M
+local function construct()
+  local self = setmetatable({balance = 0}, M)
+  return self
+end
+setmetatable(M, {__call = construct})
+
+function M:add(value) self.balance = self.balance + 1 end
+
+return M
+```
 A module defined in this way typically only contains a single class (or at least a single public one), which is the module itself.
 
 It can be used like this:
-
-    local BankAccount = require "finance.BankAccount"
-    local account = BankAccount()
+```lua
+local BankAccount = require "finance.BankAccount"
+local account = BankAccount()
+```
 or even like this:
-
-    local new = require
-    local account = new "finance.BankAccount" ()
+```lua
+local new = require
+local account = new "finance.BankAccount" ()
+```
 The above followed somewhat the Java convention of the package "finance" being in all lowercase, while the class `BankAccount` being in mixed (Camel) case and objects being lower-case. Notice the advantage. The classes are easy to spot and differentiate from instantiations of classes (i.e. objects), which are lower-case. If you spot something like `BankAccount:add(1)`, it is almost certainly an error since `:` is a method call on an object, but you'll notice that `BankAccount` is obviously a class due to the case convention.
 
 The above is not the only approach used. You will see many other styles:
-
-    account = finance.newBankAccount()
-    account = finance.create_bank_account()
-    account = finance.bankaccount.create()
-    account = finance.BankAccount.new()
+```lua
+account = finance.newBankAccount()
+account = finance.create_bank_account()
+account = finance.bankaccount.create()
+account = finance.BankAccount.new()
+```
 It can be argued that variety, without good justification, is not a good thing.
 
 [LuaModuleFunctionCritiqued]: http://lua-users.org/wiki/LuaModuleFunctionCritiqued
@@ -235,9 +249,10 @@ It can be argued that variety, without good justification, is not a good thing.
 
 # Commenting
 Use a space after `--`.
-
-    return nil  -- not found    (suggested)
-    return nil  --not found     (discouraged)
+```lua
+return nil  -- not found    (suggested)
+return nil  --not found     (discouraged)
+```
 (The above follows luarefman, PiL, luagems minus chap 21, BLP, and Kepler/[LuaRocks].)
 
 There is no standard convention for commenting.
@@ -245,15 +260,17 @@ There is no standard convention for commenting.
 Docstrings can be simulated (see DecoratorsAndDocstrings). POD format has also been advocated (see [LuaSearch]). There is also [[LuaDoc]].
 
 Kepler sometimes uses this doxygen/Javadoc-like style:
-    -- taken from cgilua/src/cgilua/session.lua
-    -------------------------------------
-    -- Deletes a session.
-    -- @param id Session identification.
-    -------------------------------------
-    function delete (id)
-            assert (check_id (id))
-            remove (filename (id))
-    end
+```lua
+-- taken from cgilua/src/cgilua/session.lua
+-------------------------------------
+-- Deletes a session.
+-- @param id Session identification.
+-------------------------------------
+function delete (id)
+  assert (check_id (id))
+  remove (filename (id))
+end
+```
 
 [LuaRocks]: http://lua-users.org/wiki/LuaRocks
 [DecoratorsAndDocstrings]: http://lua-users.org/wiki/DecoratorsAndDocstrings
@@ -262,19 +279,13 @@ Kepler sometimes uses this doxygen/Javadoc-like style:
 
 ### End Terminator
 Because `end` is a terminator for many different constructs, it can help the reader (especially in a large block) if a comment is used to clarify which construct is being terminated: [*3]
-
-    for i,v in ipairs(t) do
-        if type(v) == "string" then
-            ...lots of code here...
-        end -- if string
-    end -- for each t
-If your editor lacks Lua block matching but does have generic parenthesis matching, then this hack might even be used[*4] (or just get a better editor):
-
-    for i,v in ipairs(t) do --(
-        if type(v) == "string" then --(
-            ...lots of code here...
-        end --) if string
-    end --) for each t
+```lua
+for i,v in ipairs(t) do
+  if type(v) == "string" then
+    ...lots of code here...
+  end -- if string
+end -- for each t
+```
 
 
 ## Software Licensing
@@ -288,33 +299,37 @@ There are advantages to licensing Lua modules, or at least those intended for th
 
 ## Lua Idioms
 To test whether a variable is not `nil` in a conditional, it is terser to just write the variable name rather than explicitly compare against `nil`. Lua treats `nil` and `false` as `false` (and all other values as `true`) in a conditional:
-
-    local line = io.read()
-    if line then  -- instead of line ~= nil
-      ...
-    end
-    ...
-    if not line then  -- instead of line == nil
-      ...
-    end
+```lua
+local line = io.read()
+if line then  -- instead of line ~= nil
+  ...
+end
+...
+if not line then  -- instead of line == nil
+  ...
+end
+```
 However, if the variable tested can ever contain `false` as well, then you will need to be explicit if the two conditions must be differentiated: `line == nil` vs. `line == false`.
 
 `and` and `or` may be used for terser code:
-
-    local function test(x)
-      x = x or "idunno"
-        -- rather than if x == false or x == nil then x = "idunno" end
-      print(x == "yes" and "YES!" or x)
-        -- rather than if x == "yes" then print("YES!") else print(x) end
-    end
+```lua
+local function test(x)
+  x = x or "idunno"
+    -- rather than if x == false or x == nil then x = "idunno" end
+  print(x == "yes" and "YES!" or x)
+    -- rather than if x == "yes" then print("YES!") else print(x) end
+end
+```
 
 Clone a *small* table `t` (warning: this has a system dependent limit on table size; it was just over 2000 on one system):
-
-    u = {unpack(t)}
+```lua
+u = {unpack(t)}
+```
 
 Determine if a table `t` is empty (including non-integer keys, which `#t` ignores):
-
-    if next(t) == nil then ...
+```lua
+if next(t) == nil then ...
+```
 
 To append to an array, it can be terser and more efficient to do `t[#t+1] = 1` rather than `table.insert(t, 1)`.
 
