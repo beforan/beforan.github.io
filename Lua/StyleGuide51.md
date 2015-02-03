@@ -77,6 +77,7 @@ However, see comments in the Modules section below concerning modules used as cl
 
 ### `_` as a variable name
 The variable consisting of only an underscore `_` is commonly used as a placeholder when you want to ignore the variable:
+
 ```lua
 for _,v in ipairs(t) do print(v) end
 ```
@@ -86,6 +87,7 @@ for _,v in ipairs(t) do print(v) end
 
 ### Keys and Values in Tables
 `i`, `k`, `v`, and `t` are often used as follows:
+
 ```lua
 for k,v in pairs(t) ... end
 for i,v in ipairs(t) ... end
@@ -97,6 +99,7 @@ mt.__newindex = function(t, k, v) ... end
 
 ### `self`
 `self` refers to the object a method is invoked on (like `this` in C++ or Java). In fact, this is enforced by the `:` syntactic sugar:
+
 ```lua
 function Car:move(distance)
   self.position = self.position + distance
