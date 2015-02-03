@@ -1,6 +1,8 @@
 title: Beforan's Pages
 
 markdown: redcarpet
+redcarpet:
+  extensions: [ "tables", "no_intra_emphasis", "autolink", "smart" ]
 
 defaults:
   -
