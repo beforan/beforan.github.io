@@ -1,3 +1,11 @@
 title: Beforan's Pages
 
 markdown: redcarpet
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
