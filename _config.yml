@@ -6,6 +6,7 @@ author :
 permalink: /:year/:month/:day/:title.html
 
 markdown: redcarpet2
+highlighter: pygments
+
 redcarpet:
   extensions: ["no_intra_emphasis", "autolink", "tables"]
-highlighter: pygments
