@@ -1,4 +1,5 @@
 ---
+title: Beforan's Pages
 ---
 
 # Beforan's Pages
