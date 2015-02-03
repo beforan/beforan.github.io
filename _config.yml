@@ -1,0 +1,10 @@
+title : Jon Couldridge
+tagline: Beforan's Pages
+author :
+  name : Jon Couldridge
+  email : jcouldridge@outlook.com
+permalink: /:year/:month/:day/:title.html
+
+markdown: redcarpet2
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
