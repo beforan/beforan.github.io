@@ -1,4 +1,5 @@
 ---
+layout: default
 ---
 
 # Beforan's Pages
