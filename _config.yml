@@ -2,7 +2,7 @@ title: Beforan's Pages
 
 markdown: redcarpet
 redcarpet:
-  extensions: [ "tables", "no_intra_emphasis", "autolink", "smart" ]
+  extensions: [ "tables", "no_intra_emphasis", "autolink", "smart", "strikethrough", "space_after_headers", "superscript", "highlight", "footnotes", "abbreviations" ]
 
 defaults:
   -
