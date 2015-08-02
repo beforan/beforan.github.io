@@ -1,3 +1,7 @@
+---
+title: Final Fantasy Restricted
+---
+
 # Final Fantasy Restricted
 
 Welcome to **Final Fantasy Restricted**.
