@@ -59,6 +59,7 @@ Vincent | ?
 Cid | `Dragoon`
 
 Other interesting class setups:
+
 - `Black Mage`
 - `Chemist`?
 - `Blue Mage`
@@ -66,6 +67,7 @@ Other interesting class setups:
 **TODO: Class pages with Materia setups**
 
 Notes:
+
 - Some characters have no immediately obvious class (e.g. **Barret**)
 - Some desirable classes (e.g. `Black Mage`) have no immediately obvious character
 - Dual-classing may be appropriate to gain coverage
@@ -79,7 +81,9 @@ Notes:
 
 ### No items
 Exactly what it says on the tin: No item usage allowed.
+
 This means:
+
 - No *Tent*s - inns only.
 - No curative items - magic only.
 - No *Ether* - inns only.
@@ -103,6 +107,7 @@ This makes for a better items-based game, as it allows some (primarily Command) 
 such as *Steal*, *Morph* etc, which are really about items.
 
 Allow only:
+
 - *Steal*
 - *W-Item*
 - Optionally *Throw* (Items only, not Gil)
@@ -158,5 +163,6 @@ The modern PC version of the game allows you to use mods to affect the gameplay,
 providing any number of increased difficulty or different mechanics based runs.
 
 Here are some interesting mods to achieve that:
+
 - [Tifa's Bootleg](http://forums.qhimm.com/?topic=13212.0)
 - [FFVII HardType](http://www.insanedifficulty.com/board/index.php?/files/file/63-final-fantasy-vii-hard-type/) from the Insane Difficulty forums
