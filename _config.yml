@@ -2,8 +2,19 @@ title: Beforan's Pages
 
 markdown: redcarpet
 redcarpet:
-  extensions: [ "tables", "no_intra_emphasis", "autolink", "smart", "strikethrough", "space_after_headers", "superscript", "highlight", "footnotes", "abbreviations" ]
-
+  extensions: [
+    "tables",
+    "no_intra_emphasis",
+    "autolink",
+    "smart",
+    "strikethrough",
+    "space_after_headers",
+    "superscript",
+    "highlight",
+    "footnotes",
+    "abbreviations",
+    "with_toc_data"
+  ]
 defaults:
   -
     scope:
