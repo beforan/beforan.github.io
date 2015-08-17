@@ -41,6 +41,7 @@ materia applicable to their assigned class.
 
 There are different ways you can create job roles by restricting materia.
 Here are some suggested setups:
+
 - [Cait Sith Run Jobs](cait-sith/jobs-materia)
 - [FF-Restricted Jobs](jobs-materia)
 
@@ -102,7 +103,7 @@ Exactly what it says on the tin: No item usage allowed.
 
 This means:
 
-- No *Tent*s - inns only.
+- No *Tent* - inns only.
 - No curative items - magic only.
 - No *Ether* - inns only.
 - No permanent stat boosts from items over the course of the game (e.g. *Mind Source*).

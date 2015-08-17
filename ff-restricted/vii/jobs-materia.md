@@ -16,7 +16,7 @@ This list assigns most of the materia in Final Fantasy VII to roughly traditiona
     - Added Cut (since this is usually an unrestricted accessory)
     - Final Attack (Doesn't align with any class, so pretend it's like an accessory granting it)
 
-[This page] contains detailed (incomplete) information on how the selection of jobs below came together, out of all the jobs in the series.
+[This page](jobs) contains detailed (incomplete) information on how the selection of jobs below came together, out of all the jobs in the series.
 
 ## Jobs
 - [`Knight`](#knight)
@@ -59,7 +59,7 @@ This list assigns most of the materia in Final Fantasy VII to roughly traditiona
 - Deathblow
 - Elemental
 
-## `Mystic Knight`
+### `Mystic Knight`
 - Elemental
 - Added Effect
 
@@ -160,7 +160,7 @@ This list assigns most of the materia in Final Fantasy VII to roughly traditiona
 - Mystify
 - Seal
 
-### `Chemist / Alchemist`
+### `Chemist` / `Alchemist`
 - X-Item
 - Optional Magic (represents free healing abilities of Chemist)
     - Poisona    
