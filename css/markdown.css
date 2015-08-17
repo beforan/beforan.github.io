@@ -36,7 +36,14 @@ h4 {
 
 /* Other major elements */
 blockquote {
-	border-left: thick solid #99bbff;
+	border-left: thick solid cornflowerblue;
+    margin: 0;
+    padding: 0.01em 1em;
+    background: aliceblue;
+    font-style: italic;
+    -webkit-box-shadow: 0 0 5px 1px black;
+    -moz-box-shadow: 0 0 5px 1px black;
+    box-shadow: 0 0 5px 1px black;
 }
 
 code {
