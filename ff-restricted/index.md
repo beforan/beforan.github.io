@@ -21,15 +21,15 @@ Many ideas have been sourced from [/r/FinalFantasy](https://reddit.com/r/FinalFa
 ## Games
 
 - [Final Fantasy](i)
-- Final Fantasy II
+- [Final Fantasy II](ii)
 - [Final Fantasy III](iii)
 - Final Fantasy IV
 - [Final Fantasy V](v)
 - [Final Fantasy VI](vi)
 - [Final Fantasy VII](vii)
 - [Final Fantasy VIII](viii)
-- Final Fantasy IX
+- [Final Fantasy IX](ix)
 - [Final Fantasy X](x)
-- Final Fantasy X-2
+- [Final Fantasy X-2](x-2)
 - [Final Fantasy XII](xii)
 - [Final Fantasy XIII](xiii)
