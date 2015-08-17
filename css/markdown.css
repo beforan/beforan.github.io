@@ -65,17 +65,17 @@ pre code {
 a, a:link {
 	color: #00557f;
 	font-weight: bold;
-	text-decoration: none;
+	text-decoration: underline;
 }
 a:visited {
 	color: #776688;
 	font-weight: bold;
-	text-decoration: none;
+	text-decoration: underline;
 }
 a:hover, a:active {
 	color: #4488cc;
 	font-weight: bold;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 /* Tables */
