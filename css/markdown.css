@@ -35,6 +35,10 @@ h4 {
 }
 
 /* Other major elements */
+blockquote {
+	border-left: thick solid #99bbff;
+}
+
 code {
     padding: 2px 4px;
     font-size: 90%;
