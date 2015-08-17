@@ -185,24 +185,24 @@ This takes some of the concepts discussed above and introduces a level of random
 
 - Every character is assigned a random class/job when they first join the party
   - You can use whatever class system you like for this
-    - [Cait Sith Run Jobs](cait-sith/jobs-materia) ([randomiser](http://www.classtools.net/random-name-picker/61_cNdfBk))
-    - [FF-Restricted Jobs](jobs-materia)
-    - Something of your own design
+      - [Cait Sith Run Jobs](cait-sith/jobs-materia) ([randomiser](http://www.classtools.net/random-name-picker/61_cNdfBk))
+      - [FF-Restricted Jobs](jobs-materia)
+      - Something of your own design
   - Once a class is assigned, remove it from the random pool
 - 5 modifiers are applied throughout the game ([randomiser](http://www.classtools.net/random-name-picker/95_DVmJP6))
   - Once a modifier is applied, remove it from the random pool
   - Apply modifiers at the following times:
-    - Start of the game
-    - Entering Gold Saucer for the first time
-    - Start of Disc 2
-    - Acquiring the Highwind
-    - Start of Disc 3
+      - Start of the game
+      - Entering Gold Saucer for the first time
+      - Start of Disc 2
+      - Acquiring the Highwind
+      - Start of Disc 3
 - Once you have more than 3 characters, party composition is [randomised](http://www.classtools.net/random-name-picker/83_MFYghj)
   - Roll for current party:
-    - Whenever a character joins the group
-    - Whenever a character leaves the group
-    - At the start of Disc 2
-    - At the start of Disc 3
+      - Whenever a character joins the group
+      - Whenever a character leaves the group
+      - At the start of Disc 2
+      - At the start of Disc 3
   
 
 ## Mods
